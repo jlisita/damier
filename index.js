@@ -4,21 +4,40 @@ let nbrColumn = 8;
 let nbrRow = 8;
 
 let grid = [];
-let row = [];
 
-for(let j = 0; j < nbrRow; j++)
+for(let i = 0; i < nbrRow; i++)
 {
+    let rowArray = [];
+    grid.push(rowArray);
     rowElement = document.createElement("div");
     rowElement.className = "row";
     containerDiv.appendChild(rowElement);
-    grid[j]= rowElement;
 
-    for(let i = 0; i < nbrColumn; i++)
+
+    for(let j = 0; j < nbrColumn; j++)
     {
-        let squareEl = document.createElement("div");
-        console.log(squareEl.className);
-        squareEl.classList.add("square");
-        rowElement.appendChild(squareEl);
-        row.push(squareEl);
+        let colors;
+        if(i % 2 == 0)
+        {
+            colors = ["white","black"];
+        }
+        else
+        {
+            colors = ["black","white"];
+            
+        }
+        let color = colors[j % 2];
+        let squareEl = createSquare(rowArray,color);
     }
+}
+
+function createSquare(row,color)
+{
+    let squareEl = document.createElement("div");
+    squareEl.classList.add("square");
+    squareEl.style.backgroundColor = color;
+    rowElement.appendChild(squareEl);
+    row.push(squareEl);
+
+    return squareEl;
 }
