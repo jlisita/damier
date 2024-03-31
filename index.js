@@ -27,17 +27,17 @@ for(let i = 0; i < nbrRow; i++)
             
         }
         let color = colors[j % 2];
-        let squareEl = createSquare(rowArray,color);
+        let squareEl = createSquare(rowElement,color);
+        rowArray.push(squareEl);
     }
 }
 
-function createSquare(row,color)
+function createSquare(parentNode,color)
 {
     let squareEl = document.createElement("div");
     squareEl.classList.add("square");
     squareEl.style.backgroundColor = color;
-    rowElement.appendChild(squareEl);
-    row.push(squareEl);
+    parentNode.appendChild(squareEl);
 
     return squareEl;
 }
